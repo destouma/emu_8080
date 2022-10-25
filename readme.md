@@ -31,8 +31,7 @@ $ make clean
 $ make all
 ```
 
-To run the Disassemblenr
-in root folder
+To run the Disassemblenr : (in root folder)
 ```
 $ ./8080dis ./invaders/invaders.bin
 ```

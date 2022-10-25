@@ -4,7 +4,9 @@
 #include <stdint.h>
 
 int Emulate8080(unsigned char *codebuffer, int pc){
-    return pc++;
+    int oplength = 1;
+    printf("%04x ", pc);
+	return oplength;
 }
 
 int main (int argc, char**argv){
