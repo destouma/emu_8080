@@ -6,7 +6,7 @@ Usefull resources
 * Spaces invaders code explained: 
   * http://computerarcheology.com/Arcade/SpaceInvaders/Code.html
 * 8080 Assembler
-  * [8080 Programmers Manual](8080%20Programmers%20Manual.pdf)
+  * [8080 Programmers Manual](./document/8080%20Programmers%20Manual.pdf)
 * Space invaders ROM:
   * [invaders.e](invaders.e)
   * [invaders.f](invaders.f)
