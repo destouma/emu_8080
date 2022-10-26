@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdint.h>
-
+#include "8080dis.h"
 
 int displayPcOpCodeParamHex1(int pc, unsigned char opcode){
     printf("%04x %02x           ",pc,opcode);
