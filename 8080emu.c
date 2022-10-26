@@ -6,8 +6,9 @@
 
 
 void unimplementedInstruction(State8080* state){    
-	//pc will have advanced one, so undo that    
-	printf ("Error: Unimplemented instruction \n");    
+	//pc will have advanced one, so undo that  
+	unsigned char *opcode = &state->memory[state->pc] ;
+	printf ("Error: Unimplemented instruction %02x \n",opcode[0]);    
 	exit(1);    
 }
 
