@@ -1,3 +1,16 @@
+8080 Dissasembler and Emulator
+------------------------------
+
+8080 disassembler and emulator based on the emulator 101 tutorial.
+
+It's still work in progress.
+
+The goal is to write a "full" 8080 emulator.
+
+Enjoy !
+
+$~$
+
 Usefull resources
 -----------------
 
@@ -18,6 +31,7 @@ Usefull resources
   * [cupdiag.asm](./cpudiag/cpudiag.asm)
   * [cpudiag.bin](./cpudiag/cpudiag.bin)
 
+$~$
 
 Create invaders.bin : (in invaders folder)
 ------------------------------------------
@@ -29,6 +43,7 @@ $ cat invaders.e >> invaders
 $
 ```
 
+$~$
 
 Build 8080 Disassembler and Emulator : (in root folder)
 -------------------------------------------------------
@@ -41,6 +56,7 @@ gcc -g -Wall -o 8080emu 8080emu.c
 $
 ```
 
+$~$
 
 Run the Disassembler : (in root folder)
 ---------------------------------------
@@ -95,4 +111,43 @@ output
 1ffd 08           NOP
 1ffe 00           NOP
 1fff 00           NOP
+```
+
+$~$
+
+Run the Emulator : (in root folder)
+-----------------------------------
+```
+$ ./8080emu
+```
+
+output
+```
+0000 00           NOP                   ........  A $00 B $00 C $00 D $00 E $00 H $00 L $00 SP 0000
+0001 00           NOP                   ........  A $00 B $00 C $00 D $00 E $00 H $00 L $00 SP 0000
+0002 00           NOP                   ........  A $00 B $00 C $00 D $00 E $00 H $00 L $00 SP 0000
+0003 c3 d4 18     JMP   $18d4           ........  A $00 B $00 C $00 D $00 E $00 H $00 L $00 SP 0000
+18d4 31 00 24     LXI   SP,#$2400       ........  A $00 B $00 C $00 D $00 E $00 H $00 L $00 SP 2400
+18d7 06 00        MVI   B,#$00          ........  A $00 B $00 C $00 D $00 E $00 H $00 L $00 SP 2400
+18d9 cd e6 01     CALL  $01e6           ........  A $00 B $00 C $00 D $00 E $00 H $00 L $00 SP 23fe
+01e6 11 00 1b     LXI   D,#$1b00        ........  A $00 B $00 C $00 D $1b E $00 H $00 L $00 SP 23fe
+01e9 21 00 20     LXI   H,#$2000        ........  A $00 B $00 C $00 D $1b E $00 H $20 L $00 SP 23fe
+01ec c3 32 1a     JMP   $1a32           ........  A $00 B $00 C $00 D $1b E $00 H $20 L $00 SP 23fe
+1a32 1a           LDAX  D               ........  A $01 B $00 C $00 D $1b E $00 H $20 L $00 SP 23fe
+1a33 77           MOV   M,A             ........  A $01 B $00 C $00 D $1b E $00 H $20 L $00 SP 23fe
+1a34 23           INX   H               ........  A $01 B $00 C $00 D $1b E $00 H $20 L $01 SP 23fe
+1a35 13           INX   D               ........  A $01 B $00 C $00 D $1b E $01 H $20 L $01 SP 23fe
+1a36 05           DCR   B               s....p..  A $01 B $ff C $00 D $1b E $01 H $20 L $01 SP 23fe
+1a37 c2 32 1a     JNZ   $1a32           s....p..  A $01 B $ff C $00 D $1b E $01 H $20 L $01 SP 23fe
+1a32 1a           LDAX  D               s....p..  A $00 B $ff C $00 D $1b E $01 H $20 L $01 SP 23fe
+1a33 77           MOV   M,A             s....p..  A $00 B $ff C $00 D $1b E $01 H $20 L $01 SP 23fe
+1a34 23           INX   H               s....p..  A $00 B $ff C $00 D $1b E $01 H $20 L $02 SP 23fe
+1a35 13           INX   D               s....p..  A $00 B $ff C $00 D $1b E $02 H $20 L $02 SP 23fe
+1a36 05           DCR   B               s.......  A $00 B $fe C $00 D $1b E $02 H $20 L $02 SP 23fe
+1a37 c2 32 1a     JNZ   $1a32           s.......  A $00 B $fe C $00 D $1b E $02 H $20 L $02 SP 23fe
+1a32 1a           LDAX  D               s.......  A $00 B $fe C $00 D $1b E $02 H $20 L $02 SP 23fe
+1a33 77           MOV   M,A             s.......  A $00 B $fe C $00 D $1b E $02 H $20 L $02 SP 23fe
+
+....
+
 ```
