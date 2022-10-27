@@ -5,6 +5,8 @@ Usefull resources
   * http://www.emulator101.com/
 * Spaces invaders code explained: 
   * http://computerarcheology.com/Arcade/SpaceInvaders/Code.html
+* 8080 cpu
+  * https://en.wikipedia.org/wiki/Intel_8080
 * 8080 Assembler
   * [8080 Programmers Manual](./document/8080%20Programmers%20Manual.pdf)
 * Space invaders ROM:
