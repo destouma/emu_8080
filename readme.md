@@ -21,7 +21,7 @@ Usefull resources
 * 8080 cpu
   * https://en.wikipedia.org/wiki/Intel_8080
 * 8080 Assembler
-  * [8080 Programmers Manual](./document/8080%20Programmers%20Manual.pdf)
+  * https://altairclone.com/downloads/manuals/8080%20Programmers%20Manual.pdf
 * Space invaders ROM:
   * [invaders.e](./invaders/invaders.e)
   * [invaders.f](./invaders/invaders.f)
