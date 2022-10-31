@@ -649,7 +649,8 @@ int emulate8080(State8080* state){
         case 0xa5: unimplementedInstruction(state); break;
         case 0xa6: unimplementedInstruction(state); break;
         case 0xa7:                                              // ANA A ==> ?????
-            state->a = state->a & state->a; logicFlagsA(state);	
+            state->a = state->a & state->a; 
+            logicFlagsA(state);	
             break;
         case 0xa8: unimplementedInstruction(state); break;
         case 0xa9: unimplementedInstruction(state); break;
@@ -659,16 +660,38 @@ int emulate8080(State8080* state){
         case 0xad: unimplementedInstruction(state); break;
         case 0xae: unimplementedInstruction(state); break;
         case 0xaf:                                              // XRA A ==> ?????
-            state->a = state->a ^ state->a; logicFlagsA(state);	
+            state->a = state->a | state->a; 
+            logicFlagsA(state);	
             break; 
-        case 0xb0: unimplementedInstruction(state); break;
-        case 0xb1: unimplementedInstruction(state); break;
-        case 0xb2: unimplementedInstruction(state); break;
-        case 0xb3: unimplementedInstruction(state); break;
-        case 0xb4: unimplementedInstruction(state); break;
-        case 0xb5: unimplementedInstruction(state); break;
+        case 0xb0: // ORA B                 
+            state->a = state->a | state->b; 
+            logicFlagsA(state);	
+            break; 
+        case 0xb1: // ORA C                 
+            state->a = state->a | state->c; 
+            logicFlagsA(state);	
+            break; 
+        case 0xb2: // ORA D                 
+            state->a = state->a | state->d; 
+            logicFlagsA(state);	
+            break; 
+        case 0xb3: // ORA E                 
+            state->a = state->a | state->e; 
+            logicFlagsA(state);	
+            break; 
+        case 0xb4: // ORA H                 
+            state->a = state->a | state->h; 
+            logicFlagsA(state);	
+            break; 
+        case 0xb5: // ORA L                  
+            state->a = state->a | state->l; 
+            logicFlagsA(state);	
+            break; 
         case 0xb6: unimplementedInstruction(state); break;
-        case 0xb7: unimplementedInstruction(state); break;
+        case 0xb7: // ORA A
+            state->a = state->a | state->a; 
+            logicFlagsA(state);	
+            break; 
         case 0xb8: unimplementedInstruction(state); break;
         case 0xb9: unimplementedInstruction(state); break;
         case 0xba: unimplementedInstruction(state); break;
@@ -721,7 +744,12 @@ int emulate8080(State8080* state){
 			    state->sp += 2;
             }
             break;
-        case 0xca: unimplementedInstruction(state); break;
+        case 0xca:  // JZ address
+            if (1 == state->flags.z)
+				state->pc = (opcode[2] << 8) | opcode[1];
+			else
+				state->pc += 2;
+            break;
         case 0xcb: unimplementedInstruction(state); break;
         case 0xcc: unimplementedInstruction(state); break;
         case 0xcd:  						                    // CALL address
@@ -900,11 +928,11 @@ int main (int argc, char**argv){
 	int done = 0;
 
  	State8080* state = init8080();
-	
-	readFileIntoMemoryAt(state, "./invaders/invaders.h", 0);
-	readFileIntoMemoryAt(state, "./invaders/invaders.g", 0x800);
-	readFileIntoMemoryAt(state, "./invaders/invaders.f", 0x1000);
-	readFileIntoMemoryAt(state, "./invaders/invaders.e", 0x1800);
+	readFileIntoMemoryAt(state, "./cpudiag/cpudiag.bin", 0);
+	// readFileIntoMemoryAt(state, "./invaders/invaders.h", 0);
+	// readFileIntoMemoryAt(state, "./invaders/invaders.g", 0x800);
+	// readFileIntoMemoryAt(state, "./invaders/invaders.f", 0x1000);
+	// readFileIntoMemoryAt(state, "./invaders/invaders.e", 0x1800);
 	
 	while (done == 0)
 	{
