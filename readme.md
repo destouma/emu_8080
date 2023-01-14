@@ -45,7 +45,7 @@ $
 
 $~$
 
-Build 8080 Disassembler and Emulator : (in root folder)
+Build 8080 Disassembler and Emulator : (in v1 folder)
 -------------------------------------------------------
 ```
 $ make clean
@@ -58,7 +58,7 @@ $
 
 $~$
 
-Run the Disassembler : (in root folder)
+Run the Disassembler : (in v1 folder)
 ---------------------------------------
 ```
 $ ./8080dis ./invaders/invaders.bin
@@ -115,7 +115,7 @@ output
 
 $~$
 
-Run the Emulator : (in root folder)
+Run the Emulator : (in v1 folder)
 -----------------------------------
 ```
 $ ./8080emu
